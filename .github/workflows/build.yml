@@ -13,6 +13,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Show files (debug)
+        run: |
+          echo "== ROOT =="
+          ls -la
+          echo "== TREE (first 200 lines) =="
+          find . -maxdepth 4 -type f | sed -n '1,200p'
+          echo "== POM? =="
+          ls -la pom.xml || true
+          echo "== SRC? =="
+          ls -la src || true
+
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
@@ -21,7 +32,14 @@ jobs:
           cache: maven
 
       - name: Build with Maven
-        run: mvn -B -DskipTests package
+        run: mvn -B -DskipTests package -f pom.xml
+
+      - name: Show target output (debug)
+        run: |
+          echo "== TARGET =="
+          ls -la target || true
+          echo "== JARS =="
+          ls -la target/*.jar || true
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
