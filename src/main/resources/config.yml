@@ -1,0 +1,36 @@
+boss:
+  name: "<gradient:#7cf3ff:#b46bff>Tempest Herald</gradient>"
+  max-health: 600.0
+  follow-range: 48.0
+  arena-radius: 45.0
+  despawn-if-no-players-seconds: 45
+  fight-time-limit-seconds: 900
+
+effects:
+  thunder-volume: 1.0
+  thunder-pitch: 1.0
+  lightning-damage: false
+  lightning-visual-only: true
+
+music:
+  enabled: true
+  sound: "MUSIC_END"
+  volume: 0.9
+  pitch: 1.0
+  restart-every-seconds: 90
+
+damage:
+  shockwave: 6.0
+  static-mark: 8.0
+  cage-cross: 3.0
+  thunder-step: 7.0
+
+cooldowns:
+  shockwave-seconds: 10
+  static-mark-seconds: 12
+  cage-seconds: 18
+  thunder-step-seconds: 9
+  summon-wisps-seconds: 20
+
+particles:
+  intensity: 1.0

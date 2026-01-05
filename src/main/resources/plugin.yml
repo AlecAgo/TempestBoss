@@ -1,0 +1,16 @@
+name: TempestBoss
+version: 1.0.0
+main: me.alec.tempestboss.TempestBossPlugin
+api-version: "1.21"
+author: Alec
+commands:
+  bossspawn:
+    description: Open the boss spawn GUI
+    usage: /bossspawn
+permissions:
+  tempestboss.gui:
+    default: true
+  tempestboss.force:
+    default: op
+  tempestboss.admin:
+    default: op
