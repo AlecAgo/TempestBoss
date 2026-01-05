@@ -1,16 +1,21 @@
 name: TempestBoss
-version: 1.0.0
+version: 1.2.0
 main: me.alec.tempestboss.TempestBossPlugin
 api-version: "1.21"
 author: Alec
+
 commands:
+  boss:
+    description: Boss admin commands
+    usage: /boss help
+  bossgui:
+    description: Open boss control panel GUI (admin)
+    usage: /bossgui
+    aliases: [bossmenu, bossui]
   bossspawn:
-    description: Open the boss spawn GUI
+    description: Open spawn GUI (admin)
     usage: /bossspawn
+
 permissions:
-  tempestboss.gui:
-    default: true
-  tempestboss.force:
-    default: op
   tempestboss.admin:
     default: op
