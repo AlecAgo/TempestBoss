@@ -168,10 +168,18 @@ public class BossManager implements Listener {
             w.strikeLightningEffect(strike);
         }
 
-        plugin.getServer().getScheduler().runTaskTimer(plugin, task -> {
-            if (isActive()) { task.cancel(); return; }
-            Particles.spiral(w, loc.clone().add(0, 0.2, 0), 2.2, 40);
-        }, 0L, 4L);
+
+        new org.bukkit.scheduler.BukkitRunnable() {
+            @Override
+            public void run() {
+                if (isActive()) {
+                    cancel();
+                    return;
+                }
+                Particles.spiral(w, loc.clone().add(0, 0.2, 0), 2.2, 40);
+            }
+        }.runTaskTimer(plugin, 0L, 4L);
+
     }
 
     private void startTickLoop() {
