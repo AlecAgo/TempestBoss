@@ -6,7 +6,7 @@
 
   <groupId>me.alec</groupId>
   <artifactId>TempestBoss</artifactId>
-  <version>1.0.0</version>
+  <version>1.2.0</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -49,12 +49,6 @@
         <configuration>
           <release>21</release>
         </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>3.4.2</version>
       </plugin>
     </plugins>
   </build>
