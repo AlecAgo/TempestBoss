@@ -1,0 +1,1 @@
+package me.alec.tempestboss.gui; public class LootEditorGui {}

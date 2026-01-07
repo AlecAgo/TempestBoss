@@ -1,0 +1,1 @@
+package me.alec.tempestboss.boss; public class AbyssalLichBoss {}

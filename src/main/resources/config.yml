@@ -1,0 +1,58 @@
+# TempestBoss v1.4.0
+# Multi-arena fights + state machine + requirements + loot modes + protection + GUI categories
+
+cinematic:
+  enabled: true
+  intro-seconds: 8
+  phase-transition-seconds: 3
+  freeze-players: true
+  screen-shake:
+    enabled: true
+    strength: 0.25
+
+music:
+  enabled: true
+  volume: 0.9
+  pitch: 1.0
+  restart-every-seconds: 90
+
+arenas:
+  enter-check-period-ticks: 10
+  countdown-seconds-default: 5
+  cancel-countdown-if-below-min: true
+
+  requirement-ui:
+    actionbar-enabled: true
+    subtitle-enabled: true
+    show-every-ticks: 20
+    actionbar-template: "<yellow>{arena}</yellow> <gray>players:</gray> <aqua>{count}</aqua>/<aqua>{required}</aqua>"
+    subtitle-template: "<gray>Need</gray> <yellow>{needed}</yellow> <gray>more to start</gray>"
+
+counting:
+  exclude-spectators: true
+  exclude-dead: true
+  min-stay-seconds: 2
+
+rewards:
+  eligibility: DAMAGE_OR_TIME # ALL_PRESENT | DAMAGE_ONLY | TIME_ONLY | DAMAGE_OR_TIME
+  min-damage: 1.0
+  min-time-seconds: 10
+
+loot:
+  default-delivery: CHEST # NONE | CHEST | DROP | PER_PLAYER
+  chest:
+    lock-seconds: 30
+    announce: true
+
+protection:
+  enabled: true
+  block-break: false
+  block-place: false
+  fluid-spread: false
+  explosions: false
+
+bosses:
+  TEMPEST:
+    music-disc: MUSIC_DISC_PIGSTEP
+  ABYSSAL_LICH:
+    music-disc: MUSIC_DISC_OTHERSIDE
