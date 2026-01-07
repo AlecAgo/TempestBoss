@@ -1,8 +1,8 @@
+
 package me.alec.tempestboss;
 
 import me.alec.tempestboss.arena.Arena;
 import me.alec.tempestboss.arena.ArenaManager;
-import me.alec.tempestboss.gui.GuiUtil;
 import me.alec.tempestboss.gui.LootEditorGui;
 import me.alec.tempestboss.gui.MusicSelectGui;
 import me.alec.tempestboss.gui.arena.ArenaListGui;
@@ -31,13 +31,16 @@ public class TempestBossPlugin extends JavaPlugin {
     private LootSettingsGui lootSettingsGui;
     private CinematicSettingsGui cinematicSettingsGui;
     private ProtectionDefaultsGui protectionDefaultsGui;
-
     private ArenaListGui arenaListGui;
     private LootEditorGui lootEditorGui;
     private MusicSelectGui musicSelectGui;
-
     private LootProfilesGui lootProfilesGui;
     private LootProfileEditorGui lootProfileEditorGui;
+
+    // ✅ MISSING FIELDS (were used but not declared)
+    private me.alec.tempestboss.gui.arena.ArenaEditorGui arenaEditorGui;
+    private me.alec.tempestboss.gui.arena.ArenaProtectionGui arenaProtectionGui;
+    private me.alec.tempestboss.gui.arena.ArenaRewardsGui arenaRewardsGui;
 
     @Override
     public void onEnable() {
@@ -58,8 +61,9 @@ public class TempestBossPlugin extends JavaPlugin {
         this.lootSettingsGui = new LootSettingsGui(this);
         this.cinematicSettingsGui = new CinematicSettingsGui(this);
         this.protectionDefaultsGui = new ProtectionDefaultsGui(this);
-
         this.arenaListGui = new ArenaListGui(this, arenaManager);
+
+        // ✅ these classes now have proper constructors + open methods
         this.lootEditorGui = new LootEditorGui(this, lootManager);
         this.musicSelectGui = new MusicSelectGui(this, bossManager);
 
@@ -71,7 +75,6 @@ public class TempestBossPlugin extends JavaPlugin {
         getServer().getPluginManager().registerEvents(lootSettingsGui, this);
         getServer().getPluginManager().registerEvents(cinematicSettingsGui, this);
         getServer().getPluginManager().registerEvents(protectionDefaultsGui, this);
-
         getServer().getPluginManager().registerEvents(arenaListGui, this);
         getServer().getPluginManager().registerEvents(lootEditorGui, this);
         getServer().getPluginManager().registerEvents(musicSelectGui, this);
@@ -101,7 +104,6 @@ public class TempestBossPlugin extends JavaPlugin {
             sender.sendMessage("Players only.");
             return true;
         }
-
         if (!p.hasPermission("tempestboss.admin")) {
             p.sendMessage("§cNo permission.");
             return true;
@@ -134,38 +136,31 @@ public class TempestBossPlugin extends JavaPlugin {
                 p.sendMessage("§aReloaded.");
                 return true;
             }
-
             if (args[0].equalsIgnoreCase("stopall")) {
                 bossManager.stopAllFights();
                 p.sendMessage("§aStopped all fights.");
                 return true;
             }
-
             if (args[0].equalsIgnoreCase("fights")) {
                 liveFightsGui.open(p);
                 return true;
             }
-
             if (args[0].equalsIgnoreCase("loot")) {
                 lootSettingsGui.open(p);
                 return true;
             }
-
             if (args[0].equalsIgnoreCase("music")) {
                 musicSelectGui.open(p, bossManager.getSelectedBossType(p));
                 return true;
             }
-
             if (args[0].equalsIgnoreCase("protection")) {
                 protectionDefaultsGui.open(p);
                 return true;
             }
-
             if (args[0].equalsIgnoreCase("cinematic")) {
                 cinematicSettingsGui.open(p);
                 return true;
             }
-
             if (args[0].equalsIgnoreCase("arena")) {
                 if (args.length >= 2 && args[1].equalsIgnoreCase("gui")) {
                     arenaListGui.open(p);
@@ -178,8 +173,6 @@ public class TempestBossPlugin extends JavaPlugin {
                     return true;
                 }
             }
-
-            
             if (args[0].equalsIgnoreCase("lootprofile")) {
                 if (args.length >= 3 && args[1].equalsIgnoreCase("create")) {
                     lootProfileManager.create(args[2]);
@@ -199,7 +192,8 @@ public class TempestBossPlugin extends JavaPlugin {
                 p.sendMessage("§eUse: /boss lootprofile create <name> or /boss lootprofile gui");
                 return true;
             }
-return true;
+
+            return true;
         }
 
         return false;
@@ -211,8 +205,8 @@ return true;
     public LootProfilesGui getLootProfilesGui() { return lootProfilesGui; }
     public LootProfileEditorGui getLootProfileEditorGui() { return lootProfileEditorGui; }
     public ArenaListGui getArenaListGui() { return arenaListGui; }
+
     public me.alec.tempestboss.gui.arena.ArenaEditorGui getArenaEditorGui() { return arenaEditorGui; }
     public me.alec.tempestboss.gui.arena.ArenaProtectionGui getArenaProtectionGui() { return arenaProtectionGui; }
     public me.alec.tempestboss.gui.arena.ArenaRewardsGui getArenaRewardsGui() { return arenaRewardsGui; }
-
 }
